@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="view_dimen_xxs">2dp</dimen>
+    <dimen name="view_dimen_xs">4dp</dimen>
+    <dimen name="view_dimen_s">8dp</dimen>
+    <dimen name="view_dimen_ms">12dp</dimen>
+    <dimen name="view_dimen_m">16dp</dimen>
+    <dimen name="view_dimen_ml">24dp</dimen>
+    <dimen name="view_dimen_l">32dp</dimen>
+    <dimen name="view_dimen_xl">40dp</dimen>
+    <dimen name="view_dimen_xxl">48dp</dimen>
+
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_default">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">20sp</dimen>
+</resources>

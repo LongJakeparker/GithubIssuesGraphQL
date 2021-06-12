@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="issue"
+            type="com.example.githubissuesgraphql.model.IssueModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/view_dimen_xs"
+        app:cardCornerRadius="@dimen/view_dimen_s">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_dimen_m">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stateImage="@{issue.state}"
+                app:srcCompat="@drawable/ic_issue_open"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_dimen_ms"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{issue.title}"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivState"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Issue with example Launches url - api has HTTP ERROR 502" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_dimen_ms"
+                android:text="@{@string/format_issue_number(issue.number)}"
+                android:textColor="@color/gray_text"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                tools:text="#1173" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_dimen_xs"
+                android:dateIssue="@{issue.createdAt}"
+                android:textColor="@color/gray_text"
+                android:textSize="12sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvNumber"
+                app:layout_constraintStart_toEndOf="@id/tvNumber"
+                tools:text="opened on May 7, 2021" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAuthorImage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/view_dimen_m"
+                android:avatarUrl="@{issue.authorImage}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNumber" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAuthorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_dimen_s"
+                android:ellipsize="end"
+                android:text="@{issue.authorName}"
+                app:layout_constraintBottom_toBottomOf="@id/ivAuthorImage"
+                app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+                app:layout_constraintTop_toTopOf="@id/ivAuthorImage"
+                tools:text="moafzalmulla" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCommentCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_comment"
+                android:drawablePadding="@dimen/view_dimen_s"
+                android:text="@{String.valueOf(issue.commentCount)}"
+                app:layout_constraintBottom_toBottomOf="@id/ivAuthorImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivAuthorImage"
+                tools:text="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

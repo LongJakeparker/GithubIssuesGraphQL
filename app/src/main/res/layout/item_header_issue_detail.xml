@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="issueInfo"
+            type="com.example.githubissuesgraphql.model.IssueInfoModel" />
+
+        <variable
+            name="onMenuClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/view_dimen_m"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_menu"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="@dimen/view_dimen_xs"
+                android:translationY="-4dp"
+                android:translationX="@dimen/view_dimen_xs"
+                android:onClick="@{onMenuClick}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/format_issue_number(issueInfo.number)}"
+                android:textColor="@color/gray_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="#66" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_dimen_xs"
+                android:text="@{issueInfo.title}"
+                android:textSize="@dimen/text_size_xlarge"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNumber"
+                tools:text="TEST - Comments via GitHub's GraphQL API" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_dimen_s"
+                android:includeFontPadding="false"
+                android:gravity="center"
+                android:drawablePadding="@dimen/view_dimen_xs"
+                android:paddingVertical="@dimen/view_dimen_xs"
+                android:paddingHorizontal="@dimen/view_dimen_s"
+                android:textSize="@dimen/text_size_small"
+                android:stateLabel="@{issueInfo.state}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                tools:text="Open" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/viewNextItem"
+            android:layout_width="1dp"
+            android:layout_height="@dimen/view_dimen_s"
+            android:layout_marginStart="@dimen/view_dimen_l"
+            android:background="@color/gray_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clContent" />
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewNextItem" />
+
+        <include
+            layout="@layout/item_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:comment="@{issueInfo.body}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewDivider" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

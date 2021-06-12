@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="comment"
+            type="com.example.githubissuesgraphql.model.CommentModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="@dimen/view_dimen_m">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAuthorImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/view_dimen_m"
+            android:avatarUrl="@{comment.authorImage}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAuthorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_dimen_m"
+            android:text="@{comment.authorName}"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@id/ivAuthorImage"
+            app:layout_constraintEnd_toStartOf="@id/tvCreatedAt"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+            app:layout_constraintTop_toTopOf="@id/ivAuthorImage"
+            tools:text="moafzalmulla" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCreatedAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_dimen_s"
+            android:layout_marginEnd="@dimen/view_dimen_m"
+            android:dateComment="@{comment.createdAt}"
+            android:textColor="@color/gray_text"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvAuthorName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvAuthorName"
+            tools:text="May 7, 2021" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmptyBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_dimen_m"
+            android:autoLink="all"
+            android:lineSpacingExtra="6dp"
+            android:text="@string/label_no_description"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="italic"
+            android:visibleEmptyText="@{comment.body}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAuthorImage" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_dimen_m"
+            android:autoLink="all"
+            android:lineSpacingExtra="6dp"
+            android:text="@{comment.body}"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAuthorImage"
+            tools:text="This is an issue thread just to test commenting via GitHub's GraphQL API. Try to post a comment or add a reaction to an existing comment!" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexReactions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/view_dimen_ms"
+            android:paddingVertical="@dimen/view_dimen_m"
+            android:reactions="@{comment.reactions}"
+            app:alignContent="stretch"
+            app:alignItems="stretch"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBody" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flexReactions" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

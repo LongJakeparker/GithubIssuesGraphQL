@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "266828667084",
+    "project_id": "githubissuesgraphql",
+    "storage_bucket": "githubissuesgraphql.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266828667084:android:8c3228f98340aa5807ca69",
+        "android_client_info": {
+          "package_name": "com.example.githubissuesgraphql"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266828667084-kbho3da5f4h2agpbajdo1vqrv00fe3ci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.githubissuesgraphql",
+            "certificate_hash": "5be43079499dafbb5875a2e41b84fcb21731e183"
+          }
+        },
+        {
+          "client_id": "266828667084-33p5l78lvbeeg9robk03vljp4edn3n4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEed3Gi1l9tuTymfudmy-ps-_AhAkkneA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266828667084-33p5l78lvbeeg9robk03vljp4edn3n4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

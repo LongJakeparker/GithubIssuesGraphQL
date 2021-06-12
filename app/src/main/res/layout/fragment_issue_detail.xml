@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.githubissuesgraphql.viewmodel.IssueDetailViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_background">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="80dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingBottom="@dimen/view_dimen_xl"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvComment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:translationY="@dimen/view_dimen_s"
+                app:cardBackgroundColor="#fcfcfc"
+                app:cardCornerRadius="@dimen/view_dimen_s"
+                app:cardElevation="@dimen/view_dimen_m"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/view_dimen_m">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/view_dimen_m"
+                        android:layout_marginVertical="@dimen/view_dimen_s"
+                        android:background="@drawable/bg_white_button_corners"
+                        android:onClick="@{viewModel.clickAddCommentListener}"
+                        android:text="@string/title_comment"
+                        android:textAllCaps="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <ProgressBar
+                android:id="@+id/prgFetchDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDetailEmpty"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_empty_detail"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

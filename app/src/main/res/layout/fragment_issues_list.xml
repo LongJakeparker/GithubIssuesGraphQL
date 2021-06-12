@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.githubissuesgraphql.viewmodel.IssueViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.IssuesListFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_background">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCreateIssue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/view_dimen_m"
+                android:onClick="@{viewModel.clickCreateIssueListener}"
+                android:background="@drawable/bg_button_add"
+                android:text="@string/label_create"
+                android:drawableStart="@drawable/ic_add"
+                android:gravity="center"
+                android:drawablePadding="@dimen/view_dimen_xs"
+                android:paddingVertical="@dimen/view_dimen_xs"
+                android:paddingHorizontal="@dimen/view_dimen_s"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/sup_dark_green"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIssues"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/view_dimen_m"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:padding="@dimen/view_dimen_xs"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCreateIssue"
+                tools:listitem="@layout/item_issue" />
+
+            <ProgressBar
+                android:id="@+id/prgFetchIssues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIssuesEmpty"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_empty_issues"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

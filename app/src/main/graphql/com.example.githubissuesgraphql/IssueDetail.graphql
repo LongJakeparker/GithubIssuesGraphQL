@@ -1,0 +1,132 @@
+query RepositoryIssueDetail($number: Int!, $limit: Int = 100, $repoOwner: String!, $repoName: String!) {
+    repository (owner: $repoOwner, name: $repoName) {
+        id
+        issue(number: $number) {
+            id
+            title
+            body
+            number
+            author {
+                login
+                avatarUrl
+            }
+            createdAt
+            state
+            reactionGroups {
+                content
+                users {
+                    totalCount
+                }
+            }
+            comments(first: $limit){
+                pageInfo{
+                    hasNextPage
+                    endCursor
+                }
+                totalCount
+                nodes{
+                    body
+                    author{
+                        login
+                        avatarUrl
+                    }
+                    createdAt
+                    reactionGroups {
+                        content
+                        users {
+                            totalCount
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+query IssueCommentsLoadMore($number: Int!, $limit: Int = 10, $endCursor: String, $repoOwner: String!, $repoName: String!) {
+    repository (owner: $repoOwner, name: $repoName) {
+        name
+        issue(number: $number) {
+            comments(first: $limit, after: $endCursor){
+                pageInfo{
+                    hasNextPage
+                    endCursor
+                }
+                nodes{
+                    body
+                    author{
+                        login
+                        avatarUrl
+                    }
+                    createdAt
+                    reactionGroups {
+                        content
+                        users {
+                            totalCount
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+mutation AddCommentToIssue($issueId: ID!, $body: String!) {
+    addComment(input:{subjectId: $issueId, body: $body}) {
+        commentEdge {
+            node{
+                body
+                author{
+                    login
+                    avatarUrl
+                }
+                createdAt
+                reactionGroups {
+                    content
+                    users {
+                        totalCount
+                    }
+                }
+            }
+        }
+    }
+}
+
+mutation CloseIssue($issueId: ID!) {
+    closeIssue(input:{issueId: $issueId}) {
+        issue {
+            body
+            author{
+                login
+                avatarUrl
+            }
+            createdAt
+            reactionGroups {
+                content
+                users {
+                    totalCount
+                }
+            }
+        }
+    }
+}
+
+mutation ReopenIssue($issueId: ID!) {
+    reopenIssue(input:{issueId: $issueId}) {
+        issue {
+            body
+            author{
+                login
+                avatarUrl
+            }
+            createdAt
+            reactionGroups {
+                content
+                users {
+                    totalCount
+                }
+            }
+        }
+    }
+}
+

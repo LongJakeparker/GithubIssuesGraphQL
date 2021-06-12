@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">GithubIssuesGraphQL</string>
+
+    <string name="format_issue_number">#%d</string>
+    <string name="format_repo_info">%s/%s</string>
+    <string name="format_issue_create_at">opened on %s</string>
+    <string name="format_comment_create_at">commented on %s</string>
+    <string name="format_reaction_content">%s %d</string>
+    <string name="label_open">Open</string>
+    <string name="label_closed">Closed</string>
+    <string name="label_sign_out">Sign out</string>
+    <string name="label_close_issue">Close issue</string>
+    <string name="label_reopen_issue">Reopen issue</string>
+    <string name="content_sign_out">Do you want to sign out?</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="title_create_issue">Create a new issue</string>
+    <string name="label_submit">Submit</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_comment_optional">Leave a comment (optional)</string>
+    <string name="title_comment">Comment</string>
+    <string name="label_save">Save</string>
+    <string name="hint_comment">Leave a comment</string>
+    <string name="label_no_description">No description provided.</string>
+    <string name="label_empty_detail">Something was wrong</string>
+    <string name="label_empty_issues">There aren\'t any issues</string>
+    <string name="label_create">Create</string>
+    <string name="label_terms_of_use">Terms of use</string>
+    <string name="label_privacy_policy">Privacy policy</string>
+    <string name="format_terms_of_use_and_policy">By signing in you accept our %s and\n %s</string>
+</resources>
